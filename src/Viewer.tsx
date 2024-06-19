@@ -1,11 +1,11 @@
 import React, {FC} from "react";
 import InfiniteViewer from "react-infinite-viewer";
 import MoveableSpecimen from "./MoveableSpecimen";
-import { Collection } from './View'
+import { Specimen } from './View'
 import Moveable from "react-moveable";
 
 type CollectionProps = {
-    data: Collection;
+    data: Specimen[];
 }
 
 const Viewer: FC<CollectionProps> = ({ data }) => {

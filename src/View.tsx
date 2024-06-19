@@ -17,17 +17,12 @@ import specimenFile from './specimen.png';
         id: number
     }
     
-    // COLLECTION TYPE DEFINITION
-    export type Collection = {
-        [key: string]: Specimen
-    }
-
 export default function View() {
 
     //////////////////////////////////
 
     // Individual specimen created
-    const specimen : Specimen = {
+    const specimen1: Specimen = {
         image: specimenFile1,
         height: 600,
         width: 420,
@@ -35,10 +30,46 @@ export default function View() {
         id: 1,
     }
 
-    // Collection Objects created
-    const collection : Collection = {
-        specimen
+    const specimen2: Specimen = {
+        image: specimenFile2,
+        height: 600,
+        width: 420,
+        alt: "tree",
+        id: 2,
     }
+
+    const specimen3: Specimen = {
+        image: specimenFile3,
+        height: 600,
+        width: 420,
+        alt: "tree",
+        id: 3,
+    }
+
+    // Collection Objects created
+    const collection: Specimen[] = [
+        {
+            image: specimenFile1,
+            height: 600,
+            width: 420,
+            alt: "tree",
+            id: 1
+        },
+        {
+            image: specimenFile2,
+            height: 600,
+            width: 420,
+            alt: "tree",
+            id: 2
+        },
+        {
+            image: specimenFile3,
+            height: 600,
+            width: 420,
+            alt: "tree",
+            id: 3
+        }
+    ];
 
     // const [collection, useCollections] = useState([
     //     {
