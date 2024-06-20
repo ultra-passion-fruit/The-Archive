@@ -53,21 +53,6 @@ const Viewer: FC<CollectionProps> = ({ data }) => {
                     // Move background proportionally to user moving around
                         // i.e. Makes it seems like grid is fixed
                     viewerRef.current!.getContainer().style.backgroundPosition = `${-scrollLeft*gridSize}px ${-scrollTop*gridSize}px`;
-                    // console.log(`Grid size: ${gridSize}`);
-                    // console.log(`Scroll Left: ${scrollLeft}`);
-                    // console.log(`Scroll Top: ${scrollTop}`);
-                    // console.log(`Container Width: ${viewerRef.current!.getContainerWidth()}`);
-                    // console.log(`Container Height: ${viewerRef.current!.getContainerHeight()}`);
-                    // console.log(`Viewport Width: ${viewerRef.current!.getViewportWidth()}`);
-                    // console.log(`Viewport Height: ${viewerRef.current!.getViewportHeight()}`);
-                    // console.log(`Zoom: ${viewerRef.current!.getZoom()}`);
-
-                    // console.log("Container");
-                    // console.log(viewerRef.current!.getContainer());
-                    // console.log("Viewport");
-                    // console.log(viewerRef.current!.getViewport());
-                    // console.log("Wrapper");
-                    // console.log(viewerRef.current!.getWrapper());
                 }}
                 onPinch={({ zoom, clientX, clientY }) => {
                     // Zooms grid in/out as user zooms in/out

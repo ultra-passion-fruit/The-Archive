@@ -16,7 +16,6 @@ const MoveableSpecimen: FC<CollectionProps> = ({ collection }) => {
             ))}
             <Moveable
                 scrollable={true}
-                // scrollOptions={scrollOptions}
                 target={".target"}
                 individualGroupable={true}
                 draggable={true}
@@ -24,12 +23,10 @@ const MoveableSpecimen: FC<CollectionProps> = ({ collection }) => {
                 scalable={true}
                 keepRatio={true}
                 rotatable={false}
+                origin={false}
                 onRender={e => {
                     e.target.style.cssText += e.cssText;
                 }}
-                // onScroll={({ direction }) => {
-                //     viewerRef.current!.scrollBy(direction[0] * 10, direction[1] * 10);
-                // }}
                 >
             </Moveable>
         </div>
