@@ -1,5 +1,6 @@
 import React, {FC} from "react";
-import Moveable from "react-moveable";
+import Moveable, { MoveableRefObject, MoveableRefTargetType } from "react-moveable";
+import Selecto from "react-selecto";
 import { Specimen } from './View'
 
 type CollectionProps = {
@@ -8,16 +9,17 @@ type CollectionProps = {
 
 const MoveableSpecimen: FC<CollectionProps> = ({ collection }) => {
 
+    const [targets, setTargets] = React.useState<Array<any>>([]);
+    const moveableRef = React.useRef<Moveable>(null);
+    const selectoRef = React.useRef<Selecto>(null);
+
     return (
         <div className="viewport">
 
-            {collection.map((specimen) => (
-                <img className="target" src={specimen.image} height={specimen.height} width={specimen.width} key={specimen.id}/>
-            ))}
             <Moveable
+                ref={moveableRef}
                 scrollable={true}
-                target={".target"}
-                individualGroupable={true}
+                target={targets}
                 draggable={true}
                 resizable={false}
                 scalable={true}
@@ -27,8 +29,66 @@ const MoveableSpecimen: FC<CollectionProps> = ({ collection }) => {
                 onRender={e => {
                     e.target.style.cssText += e.cssText;
                 }}
-                >
-            </Moveable>
+                onClickGroup={e => {
+                    selectoRef.current!.clickTarget(e.inputEvent, e.inputTarget);
+                }}
+                onRenderGroup={e => {
+                    e.events.forEach(ev => {
+                        ev.target.style.cssText += ev.cssText;
+                    });
+                }}
+            />
+
+            {/*
+                1. Assign moveable target to empty "targets" array
+                2. Assign ".target" class as selectableTargets
+                3. onSelect event uses setTargets state function to add the
+                    items selected to the empty "targets" array
+                4. Selected items now act as moveable components only when selected
+            */}
+            <Selecto
+                ref={selectoRef}
+                dragContainer={".infinite-viewer"}
+                selectableTargets={[".target"]}
+                hitRate={0}
+                selectByClick={true}
+                selectFromInside={false}
+                toggleContinueSelect={["shift"]}
+                ratio={0}
+                onDragStart={(e: any) => {
+                    const target = e.inputEvent.target;
+                    if (
+                        moveableRef.current!.isMoveableElement(target)
+                        || targets!.some(t => t === target || t.contains(target))
+                    ) {
+                        e.stop();
+                    }
+                }}
+                onSelect={e => {
+                    if (e.isDragStartEnd) {
+                        return;
+                    }
+                    setTargets(e.selected);
+                }}
+                onSelectEnd={e => {
+                    if (e.isDragStartEnd) {
+                        e.inputEvent.preventDefault();
+                        moveableRef.current!.waitToChangeTarget().then(() => {
+                            moveableRef.current!.dragStart(e.inputEvent);
+                        });
+                    }
+                    setTargets(e.selected);
+                }}
+            />
+            {collection.map((specimen) => (
+                <img
+                    className={`target target${specimen.id}`}
+                    src={specimen.image}
+                    height={specimen.height}
+                    width={specimen.width}
+                    key={specimen.id}
+                />
+            ))}
         </div>
     )
 };

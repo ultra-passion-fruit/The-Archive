@@ -198,13 +198,6 @@ body:has(.margin) {
     background: #f55 !important;
 }
 
-.infinite-viewer{
-    height: 100vh;
-    width: 100vw;
-    border: 5px;
-    border-color: black;
-}
-
 .viewport {
     display: flex;
     justify-content: center;

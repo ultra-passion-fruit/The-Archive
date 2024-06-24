@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import Viewer from './Viewer';
 import specimenFile1 from './acer-saccharum-CAN501466.png';
 import specimenFile2 from './taraxacum-officinale-CAN10088957.png';
