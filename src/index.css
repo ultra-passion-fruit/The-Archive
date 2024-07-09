@@ -232,3 +232,47 @@ body:has(.margin) {
     background: #ddd;
     margin-left: 20px;
 }
+
+.toolbar {
+    background-color: #FFF;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 143px;
+    width: 47px;
+    position: fixed;
+    margin: 0;
+    top: 240px;
+    left: 10px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.toolbar-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    margin: 5px;
+    border-radius: 8px;
+    z-index: 3;
+}
+
+.toolbar-button:hover {
+    background-color: #EEE;
+}
+
+.toolbar-button-separator {
+    background-color: #EEE;
+    width: 25px;
+    height: 2px;
+}
+
+.toolbar-hand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

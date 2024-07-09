@@ -33,14 +33,6 @@ const Viewer: FC<CollectionProps> = ({ data }) => {
 
     return (
         <div className="viewer">
-            {/* <h1>This is the View page.</h1> */}
-            {/* <div className="control-panel-container"> */}
-                <button className="button" onClick={() => {
-                    viewerRef.current!.scrollCenter();
-                    }} style={{
-                        zIndex: 1
-                }}>Center</button>
-            {/* </div> */}
             <InfiniteViewer className="infinite-viewer"
                 ref={viewerRef}
                 usePinch={true}
