@@ -7,6 +7,7 @@ import specimenFile3 from './tilia-americana-CAN500927.png';
 import specimenFile from './specimen.png';
 import ZoomControl from './react-components/ZoomBar';
 import ZoomBar from './react-components/ZoomBar';
+import HomeButton from './react-components/HomeButton';
 
 ///// TEMP TYPES DEFINITIONS /////
     
@@ -96,6 +97,7 @@ export default function View() {
     
     return (
         <div>
+            <HomeButton></HomeButton>
             <ToolBar></ToolBar>
             <Viewer data={collection}/>
             <ZoomBar></ZoomBar>
