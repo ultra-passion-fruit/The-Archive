@@ -1,10 +1,12 @@
 import React from 'react';
 import Viewer from './Viewer';
-import ToolBar from './ToolBar';
+import ToolBar from './react-components/ToolBar';
 import specimenFile1 from './acer-saccharum-CAN501466.png';
 import specimenFile2 from './taraxacum-officinale-CAN10088957.png';
 import specimenFile3 from './tilia-americana-CAN500927.png';
 import specimenFile from './specimen.png';
+import ZoomControl from './react-components/ZoomBar';
+import ZoomBar from './react-components/ZoomBar';
 
 ///// TEMP TYPES DEFINITIONS /////
     
@@ -96,6 +98,7 @@ export default function View() {
         <div>
             <ToolBar></ToolBar>
             <Viewer data={collection}/>
+            <ZoomBar></ZoomBar>
         </div>
     );
 }
