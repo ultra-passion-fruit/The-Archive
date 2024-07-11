@@ -82,11 +82,11 @@ const MoveableSpecimen: FC<CollectionProps> = ({ collection }) => {
             />
             {collection.map((specimen) => (
                 <img
-                    className={`target target${specimen.id}`}
-                    src={specimen.image}
+                    className={`target target${specimen._id}`}
+                    src={specimen.imagePath}
                     height={specimen.height}
                     width={specimen.width}
-                    key={specimen.id}
+                    key={specimen._id}
                 />
             ))}
         </div>

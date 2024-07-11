@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Viewer from './Viewer';
 import ToolBar from './ToolBar';
 import specimenFile1 from '../../../assets/data/acer-saccharum-CAN501466.png';
@@ -13,88 +13,28 @@ import HomeButton from './HomeButton';
     
     // SPECIMEN TYPE DEFINITION
     export type Specimen = {
-        image: string,
+        imagePath: string,
         height: number,
         width: number,
         alt: string,
-        id: number
+        _id: number
     }
     
 export default function View() {
 
-    //////////////////////////////////
-
-    // Individual specimen created
-    const specimen1: Specimen = {
-        image: specimenFile1,
-        height: 600,
-        width: 420,
-        alt: "tree",
-        id: 1,
-    }
-
-    const specimen2: Specimen = {
-        image: specimenFile2,
-        height: 600,
-        width: 420,
-        alt: "tree",
-        id: 2,
-    }
-
-    const specimen3: Specimen = {
-        image: specimenFile3,
-        height: 600,
-        width: 420,
-        alt: "tree",
-        id: 3,
-    }
-
-    // Collection Objects created
-    const collection: Specimen[] = [
-        {
-            image: specimenFile1,
-            height: 600,
-            width: 420,
-            alt: "tree",
-            id: 1
-        },
-        {
-            image: specimenFile2,
-            height: 600,
-            width: 420,
-            alt: "tree",
-            id: 2
-        },
-        {
-            image: specimenFile3,
-            height: 600,
-            width: 420,
-            alt: "tree",
-            id: 3
-        }
-    ];
-
-    // const [collection, useCollections] = useState([
-    //     {
-    //         image: specimenFile1,
-    //         height: 600,
-    //         width: 420,
-    //         id: 1
-    //     },
-    //     {
-    //         image: specimenFile2,
-    //         height: 600,
-    //         width: 420,
-    //         id: 2
-    //     },
-    //     {
-    //         image: specimenFile3,
-    //         height: 600,
-    //         width: 420,
-    //         id: 3
-    //     }
-    // ]);
+    const [collection, setCollection] = useState<Specimen[]>([]);
     
+    useEffect(() => {
+        fetch('http://localhost:8000/user')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setCollection(data.collections[0].specimens);
+                console.log(data.collections[0].specimens)
+            })
+    }, []);
+
     return (
         <div>
             <HomeButton/>

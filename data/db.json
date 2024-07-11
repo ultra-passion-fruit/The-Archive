@@ -1,0 +1,45 @@
+{   
+    "user" : {
+        "_id": "userId123",
+        "username": "john_doe",
+        "email": "john@example.com",
+        "collections": [
+            {
+                "_id" : "1",
+                "collectionName" : "My New Collection",
+                "specimens" : [
+                    {
+                        "imagePath": "/assets/data/acer-saccharum-CAN501466.png",
+                        "height": 600,
+                        "width": 420,
+                        "fullName": "Acer Saccharum",
+                        "Genus": "Acer",
+                        "Species": "Saccharum",
+                        "alt": "acer saccharum",
+                        "_id": 1
+                    },
+                    {
+                        "imagePath": "/assets/data/taraxacum-officinale-CAN10088957.png",
+                        "height": 600,
+                        "width": 420,
+                        "fullName": "Taraxacum Officinale",
+                        "Genus": "Taraxacum",
+                        "Species": "Officinale",
+                        "alt": "taraxacum officinale",
+                        "_id": 2
+                    },
+                    {
+                        "imagePath": "/assets/data/tilia-americana-CAN500927.png",
+                        "height": 600,
+                        "width": 420,
+                        "fullName": "Tilia Americana",
+                        "Genus": "Tilia",
+                        "Species": "Americana",
+                        "alt": "tilia americana",
+                        "_id": 3
+                    }
+                ]
+            }
+        ]
+    }
+}
