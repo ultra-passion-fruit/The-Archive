@@ -1,13 +1,13 @@
 import React from 'react';
 import Viewer from './Viewer';
-import ToolBar from './react-components/ToolBar';
-import specimenFile1 from './acer-saccharum-CAN501466.png';
-import specimenFile2 from './taraxacum-officinale-CAN10088957.png';
-import specimenFile3 from './tilia-americana-CAN500927.png';
-import specimenFile from './specimen.png';
-import ZoomControl from './react-components/ZoomBar';
-import ZoomBar from './react-components/ZoomBar';
-import HomeButton from './react-components/HomeButton';
+import ToolBar from './ToolBar';
+import specimenFile1 from '../assets/data/acer-saccharum-CAN501466.png';
+import specimenFile2 from '../assets/data/taraxacum-officinale-CAN10088957.png';
+import specimenFile3 from '../assets/data/tilia-americana-CAN500927.png';
+import specimenFile from '../assets/data/specimen.png';
+import ZoomControl from './ZoomBar';
+import ZoomBar from './ZoomBar';
+import HomeButton from './HomeButton';
 
 ///// TEMP TYPES DEFINITIONS /////
     

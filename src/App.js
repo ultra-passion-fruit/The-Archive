@@ -1,5 +1,5 @@
 import React from "react";
-import View from './View.tsx'
+import View from './react-components/View.tsx'
 
 function App() {
   return (
