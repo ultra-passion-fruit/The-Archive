@@ -1,6 +1,6 @@
 import React from "react"
-import zoomPlus from '../assets/view-page-tools/zoom-in-button.png'
-import zoomMinus from '../assets/view-page-tools/zoom-out-button.png'
+import zoomPlus from '../../../assets/view-page-tools/zoom-in-button.png'
+import zoomMinus from '../../../assets/view-page-tools/zoom-out-button.png'
 
 
 export default function ZoomBar() {

@@ -1,5 +1,5 @@
 import React from "react";
-import homeButton from "../assets/herbarium-logo.png"
+import homeButton from "../../../assets/herbarium-logo.png"
 
 export default function HomeButton() {
 

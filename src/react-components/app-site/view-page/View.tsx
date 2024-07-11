@@ -1,10 +1,10 @@
 import React from 'react';
 import Viewer from './Viewer';
 import ToolBar from './ToolBar';
-import specimenFile1 from '../assets/data/acer-saccharum-CAN501466.png';
-import specimenFile2 from '../assets/data/taraxacum-officinale-CAN10088957.png';
-import specimenFile3 from '../assets/data/tilia-americana-CAN500927.png';
-import specimenFile from '../assets/data/specimen.png';
+import specimenFile1 from '../../../assets/data/acer-saccharum-CAN501466.png';
+import specimenFile2 from '../../../assets/data/taraxacum-officinale-CAN10088957.png';
+import specimenFile3 from '../../../assets/data/tilia-americana-CAN500927.png';
+import specimenFile from '../../../assets/data/specimen.png';
 import ZoomControl from './ZoomBar';
 import ZoomBar from './ZoomBar';
 import HomeButton from './HomeButton';
@@ -97,10 +97,10 @@ export default function View() {
     
     return (
         <div>
-            <HomeButton></HomeButton>
-            <ToolBar></ToolBar>
+            <HomeButton/>
+            <ToolBar/>
             <Viewer data={collection}/>
-            <ZoomBar></ZoomBar>
+            <ZoomBar/>
         </div>
     );
 }

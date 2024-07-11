@@ -1,7 +1,7 @@
 import React from 'react';
-import hand from '../assets/view-page-tools/hand.png'
-import cursor from '../assets/view-page-tools/cursor.png'
-import addButton from '../assets/view-page-tools/add-button.png'
+import hand from '../../../assets/view-page-tools/hand.png'
+import cursor from '../../../assets/view-page-tools/cursor.png'
+import addButton from '../../../assets/view-page-tools/add-button.png'
 
 export default function ToolBar() {
     return (
