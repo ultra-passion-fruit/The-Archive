@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Viewer from './Viewer';
 import ToolBar from './ToolBar';
-import specimenFile1 from '../../../assets/data/acer-saccharum-CAN501466.png';
-import specimenFile2 from '../../../assets/data/taraxacum-officinale-CAN10088957.png';
-import specimenFile3 from '../../../assets/data/tilia-americana-CAN500927.png';
-import specimenFile from '../../../assets/data/specimen.png';
-import ZoomControl from './ZoomBar';
 import ZoomBar from './ZoomBar';
 import HomeButton from './HomeButton';
+import { useParams } from 'react-router-dom';
+
+import { Collection } from '../herbarium-page/Herbarium';
 
 ///// TEMP TYPES DEFINITIONS /////
     
@@ -16,12 +14,16 @@ import HomeButton from './HomeButton';
         imagePath: string,
         height: number,
         width: number,
+        fullName: string,
+        genus: string,
+        species: string,
         alt: string,
         _id: number
     }
     
 export default function View() {
 
+    const { id } = useParams<string>();
     const [collection, setCollection] = useState<Specimen[]>([]);
     
     useEffect(() => {
@@ -30,10 +32,18 @@ export default function View() {
                 return res.json();
             })
             .then(data => {
-                setCollection(data.collections[0].specimens);
-                console.log(data.collections[0].specimens)
+                // setCollection(data.collections.reduce((accum: Collection[], curren: Collection) => {
+                //     accum[curren._id] = curren;
+                // }, {}).get(id))
+                // setCollection(data.collections[0].specimens);
+                setCollection(data.collections.find((collec: Collection) => {
+                    return collec._id === id;
+                }).specimens);
             })
-    }, []);
+            .catch((error) => {
+                
+            })
+    }, [collection]);
 
     return (
         <div>

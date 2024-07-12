@@ -14,7 +14,7 @@ function App() {
             <Route path="login"/>
             <Route path="/app">
                 <Route path="herbarium" element={<Herbarium/>}/>
-                <Route path="view" element={<View/>}/>
+                <Route path="view/:id" element={<View/>}/>
                 <Route path="account" element={<Account/>}/>
             </Route>
             <Route path="*"/>

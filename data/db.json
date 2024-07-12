@@ -5,8 +5,8 @@
         "email": "john@example.com",
         "collections": [
             {
-                "_id" : "1",
-                "collectionName" : "My New Collection",
+                "_id" : "2",
+                "name" : "My New Collection",
                 "specimens" : [
                     {
                         "imagePath": "/assets/data/acer-saccharum-CAN501466.png",
