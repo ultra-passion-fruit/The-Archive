@@ -74,20 +74,20 @@ body:has(.margin) {
     box-sizing: border-box;
 }
 
-.target1 {
-    left: 120px;
-    top: 120px;
+/* .target1 {
+    left: 0px;
+    top: 0px;
 }
 
 .target2 {
-    left: 300px;
-    top: 140px;
+    left: 0px;
+    top: 0px;
 }
 
 .target3 {
-    left: 180px;
-    top: 250px;
-}
+    left: 0px;
+    top: 0px;
+} */
 
 .nested {
     position: absolute;

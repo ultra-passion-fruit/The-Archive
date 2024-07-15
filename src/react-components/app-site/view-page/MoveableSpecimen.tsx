@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import Moveable, { MoveableRefObject, MoveableRefTargetType } from "react-moveable";
 import Selecto from "react-selecto";
-import { Specimen } from './View'
+import { TSpecimen } from './View'
 
 type CollectionProps = {
-    collection: Specimen[];
+    collection: TSpecimen[];
 }
 
 const MoveableSpecimen: FC<CollectionProps> = ({ collection }) => {

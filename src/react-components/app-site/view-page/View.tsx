@@ -10,21 +10,23 @@ import { Collection } from '../herbarium-page/Herbarium';
 ///// TEMP TYPES DEFINITIONS /////
     
     // SPECIMEN TYPE DEFINITION
-    export type Specimen = {
+    export type TSpecimen = {
+        _id: string,
         imagePath: string,
         height: number,
         width: number,
-        fullName: string,
+        collectionId: string,
+        binomialNomenclature: string,
         genus: string,
         species: string,
         alt: string,
-        _id: number
     }
     
 export default function View() {
 
     const { id } = useParams<string>();
-    const [collection, setCollection] = useState<Specimen[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [collection, setCollection] = useState<TSpecimen[]>([]);
     
     useEffect(() => {
         fetch('http://localhost:8000/user')
@@ -39,11 +41,19 @@ export default function View() {
                 setCollection(data.collections.find((collec: Collection) => {
                     return collec._id === id;
                 }).specimens);
-            })
-            .catch((error) => {
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 500);
                 
             })
+            .catch((error) => {
+                setIsLoading(false);
+            })
     }, [collection]);
+
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
 
     return (
         <div>

@@ -5,41 +5,136 @@
         "email": "john@example.com",
         "collections": [
             {
-                "_id" : "2",
-                "name" : "My New Collection",
+                "_id" : "123",
+                "name" : "Local Plants",
                 "specimens" : [
                     {
+                        "_id": "1",
                         "imagePath": "/assets/data/acer-saccharum-CAN501466.png",
                         "height": 600,
                         "width": 420,
-                        "fullName": "Acer Saccharum",
+                        "x": 0,
+                        "y": 0,
+                        "collectionId": "123",
+                        "binomialNomenclature": "Acer Saccharum",
                         "Genus": "Acer",
                         "Species": "Saccharum",
-                        "alt": "acer saccharum",
-                        "_id": 1
+                        "alt": "acer saccharum"
                     },
                     {
+                        "_id": "2",
                         "imagePath": "/assets/data/taraxacum-officinale-CAN10088957.png",
                         "height": 600,
                         "width": 420,
-                        "fullName": "Taraxacum Officinale",
+                        "x": 0,
+                        "y": 0,
+                        "collectionId": "123",
+                        "binomialNomenclature": "Taraxacum Officinale",
                         "Genus": "Taraxacum",
                         "Species": "Officinale",
-                        "alt": "taraxacum officinale",
-                        "_id": 2
+                        "alt": "taraxacum officinale"
                     },
                     {
+                        "_id": "3",
                         "imagePath": "/assets/data/tilia-americana-CAN500927.png",
                         "height": 600,
                         "width": 420,
-                        "fullName": "Tilia Americana",
+                        "x": 0,
+                        "y": 0,
+                        "collectionId": "123",
+                        "binomialNomenclature": "Tilia Americana",
                         "Genus": "Tilia",
                         "Species": "Americana",
-                        "alt": "tilia americana",
-                        "_id": 3
+                        "alt": "tilia americana"
                     }
                 ]
+            },
+            {
+                "_id": "124",
+                "name": "Flowers",
+                "specimens": [
+                    {
+                        "_id": "4",
+                        "imagePath": "/assets/data/carex-fuliginosa-subsp-msandra-CAN10170097.jpg",
+                        "height": 600,
+                        "width": 420,
+                        "x": 0,
+                        "y": 0,
+                        "collectionId": "124",
+                        "binomialNomenclature": "Carex Fuliginosa subsp. misandra",
+                        "Genus": "Carex",
+                        "Species": "Fulginosa subsp. misandra",
+                        "alt": "carex fuliginosa subspecies misandra"
+                    }              
+                ]
             }
+        ],
+        "specimens": [
+            {
+                "_id": "1",
+                "imagePath": "/assets/data/acer-saccharum-CAN501466.png",
+                "height": 600,
+                "width": 420,
+                "x": 0,
+                "y": 0,
+                "collectionId": "123",
+                "binomialNomenclature": "Acer Saccharum",
+                "Genus": "Acer",
+                "Species": "Saccharum",
+                "alt": "acer saccharum"
+            },
+            {
+                "_id": "2",
+                "imagePath": "/assets/data/taraxacum-officinale-CAN10088957.png",
+                "height": 600,
+                "width": 420,
+                "x": 0,
+                "y": 0,
+                "collectionId": "123",
+                "binomialNomenclature": "Taraxacum Officinale",
+                "Genus": "Taraxacum",
+                "Species": "Officinale",
+                "alt": "taraxacum officinale"
+            },
+            {
+                "_id": "4",
+                "imagePath": "/assets/data/tilia-americana-CAN500927.png",
+                "height": 600,
+                "width": 420,
+                "x": 0,
+                "y": 0,
+                "collectionId": "123",
+                "binomialNomenclature": "Tilia Americana",
+                "Genus": "Tilia",
+                "Species": "Americana",
+                "alt": "tilia americana"
+            },
+            {
+                "_id": "5",
+                "imagePath": "/assets/data/carex-fuliginosa-subsp-msandra-CAN10170097.jpg",
+                "height": 600,
+                "width": 420,
+                "x": 0,
+                "y": 0,
+                "collectionId": "124",
+                "binomialNomenclature": "Carex Fuliginosa subsp. misandra",
+                "Genus": "Carex",
+                "Species": "Fulginosa subsp. misandra",
+                "alt": "carex fuliginosa subspecies misandra"
+            },
+            {
+                "_id": "6",
+                "imagePath": "/assets/data/kalmia-procumbens-CAN10170126.jpg",
+                "height": 600,
+                "width": 420,
+                "x": 0,
+                "y": 0,
+                "collectionId": "none",
+                "binomialNomenclature": "Kalmia procumbens",
+                "Genus": "Kalmia",
+                "Species": "procumbens",
+                "alt": "Kalmia procumbens"
+            }                   
         ]
     }
 }

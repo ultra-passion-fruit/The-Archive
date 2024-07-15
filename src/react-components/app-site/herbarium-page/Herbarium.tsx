@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react"
-import { Specimen } from "../view-page/View";
+import { TSpecimen } from "../view-page/View";
 
 import { Link } from "react-router-dom";
+import Carrousel from "./Carrousel";
+import Collection from "./Collection";
+import Specimen from "./Specimen";
 
 export interface Collection {
     _id: string,
     name: string,
-    specimens: Specimen[]
+    specimens: TSpecimen[]
 }
 
 export default function Herbarium() {
 
     const [collections, setCollections] = useState<Collection[]>([]);
     const [collectionsIds, setCollectionsIds] = useState<String[]>([]);
-    const [isLoading, setIsLoading] = useState(true); // Add a loading state
+    const [specimens, setSpecimens] = useState<TSpecimen[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
 
     useEffect(() => {
         fetch('http://localhost:8000/user')
@@ -22,9 +27,12 @@ export default function Herbarium() {
         })
         .then((data) => {
             setCollections(data.collections);
-            console.log(data.collections)
+            setSpecimens(data.specimens)
 
-            setIsLoading(false);
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 500);
+            
         })
     }, []);
 
@@ -36,14 +44,44 @@ export default function Herbarium() {
         <div>
             <h1>Herbarium</h1>
             <div>
-                {collections.map((collection: Collection) => {
-                    return (
-                        <div key={collection._id}>
-                            <h2>Collection {collection._id}</h2>
-                            <Link to={`/app/view/${collection._id}`}>{collection.name}</Link>
-                        </div>
-                    )
-                })}
+                <h2>Collections</h2>
+                <Carrousel>
+                    {collections.map((collection: Collection) => {
+                        return (
+                            <Collection 
+                                id={collection._id}
+                                name={collection.name} 
+                                specimens={collection.specimens}
+                            />
+                        )
+                    })}
+                </Carrousel>
+                <h2>All Specimen</h2>
+                <Carrousel>
+                    {specimens.map((specimen: TSpecimen) => {
+                        return (
+                            <Specimen 
+                                id={specimen._id}
+                                name={specimen.binomialNomenclature}
+                                image={specimen.imagePath}
+                                alt={specimen.alt}
+                            />
+                        )
+                    })}
+                </Carrousel>
+                <h2>Unclassified Specimen</h2>
+                    {specimens.map((specimen: TSpecimen) => {
+                        if (specimen.collectionId === "none") {
+                            return (
+                                <Specimen 
+                                    id={specimen._id}
+                                    name={specimen.binomialNomenclature}
+                                    image={specimen.imagePath}
+                                    alt={specimen.alt}
+                                />
+                            )
+                        }
+                    })}
             </div>
             {/* <Collection/> */}
         </div>
