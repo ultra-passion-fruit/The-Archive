@@ -5,7 +5,7 @@ import addButton from '../../../assets/view-page-tools/add-button.png'
 
 export default function ToolBar() {
     return (
-        <div className="toolbar">
+        <div className="toolbar-container">
             <div className="toolbar-main-tools-container">
                 <div className="toolbar-button-container toolbar-hand">
                     <img className="toolbar-button toolbar-hand" src={hand} alt="hand button"></img>

@@ -56,11 +56,14 @@ export default function View() {
     }
 
     return (
-        <div>
-            <HomeButton/>
-            <ToolBar/>
+        <>
+            <div className="view-container">
+                <HomeButton/>
+                <ToolBar/>
+                <ZoomBar/>
+            </div>
             <Viewer data={collection}/>
-            <ZoomBar/>
-        </div>
+        </>
+        
     );
 }

@@ -5,7 +5,7 @@ import zoomMinus from '../../../assets/view-page-tools/zoom-out-button.png'
 
 export default function ZoomBar() {
     return (
-        <div className="zoombar">
+        <div className="zoombar-container">
             <div className="zoombar-button-container zoombar-plus">
                 <img className="zoombar-button zoombar-plus" src={zoomPlus} alt="zoom in button"></img>
             </div>
