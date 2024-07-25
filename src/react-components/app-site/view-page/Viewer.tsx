@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import InfiniteViewer from "react-infinite-viewer";
 import MoveableSpecimen from "./MoveableSpecimen";
 import { TSpecimen } from './View'
@@ -9,6 +9,8 @@ type CollectionProps = {
 }
 
 const Viewer: FC<CollectionProps> = ({ data }) => {
+
+    let [gridSize, setGridSize] = useState(1); 
 
     const viewerRef = React.useRef<InfiniteViewer>(null);
 
@@ -29,8 +31,6 @@ const Viewer: FC<CollectionProps> = ({ data }) => {
         },
     };
 
-    let gridSize = 1;
-
     return (
         <div className="viewer">
             <InfiniteViewer className="infinite-viewer"
@@ -44,13 +44,14 @@ const Viewer: FC<CollectionProps> = ({ data }) => {
                 onScroll={({ scrollLeft, scrollTop }) => {
                     // Move background proportionally to user moving around
                         // i.e. Makes it seems like grid is fixed
+                    // console.log("On Move:" + gridSize);
                     viewerRef.current!.getContainer().style.backgroundPosition = `${-scrollLeft*gridSize}px ${-scrollTop*gridSize}px`;
                 }}
                 onPinch={({ zoom, clientX, clientY }) => {
                     // Zooms grid in/out as user zooms in/out
-                    gridSize = zoom; // Adjust grid size based on zoom level
-                    // console.log(gridSize);
-                    let localGrid = gridSize*50;
+                    setGridSize(zoom); // Adjust grid size based on zoom level
+                    // console.log("On Zoom: " + gridSize);
+                    let localGrid = gridSize*40;
                     
                     viewerRef.current!.getContainer().style.backgroundSize = `${localGrid}px ${localGrid}px`;
                     
