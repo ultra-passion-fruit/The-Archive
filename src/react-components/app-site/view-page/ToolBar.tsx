@@ -3,7 +3,16 @@ import hand from '../../../assets/view-page-tools/hand.png'
 import cursor from '../../../assets/view-page-tools/cursor.png'
 import addButton from '../../../assets/view-page-tools/add-button.png'
 
-export default function ToolBar() {
+interface ToolBarProps {
+    addButtonClick: (message: string) => void;
+  }
+
+const ToolBar: React.FC<ToolBarProps> = ({ addButtonClick }) => {
+
+    const onAddButtonClick = () => {
+        addButtonClick('Add Button Clicked');
+    };
+
     return (
         <div className="toolbar-container">
             <div className="toolbar-main-tools-container">
@@ -16,8 +25,10 @@ export default function ToolBar() {
             </div>
             <div className="toolbar-button-separator"></div>
             <div className="toolbar-button-container toolbar-add">
-                <img className="toolbar-button toolbar-add" src={addButton} alt="add button"></img>
+                <img className="toolbar-button toolbar-add" onClick={onAddButtonClick} src={addButton} alt="add button"></img>
             </div>
         </div>       
     )
 }
+
+export default ToolBar;

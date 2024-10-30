@@ -3,6 +3,7 @@ import Viewer from './Viewer';
 import ToolBar from './ToolBar';
 import ZoomBar from './ZoomBar';
 import HomeButton from './HomeButton';
+import AddModal from './AddModal';
 import { useParams } from 'react-router-dom';
 
 import { Collection } from '../herbarium-page/Herbarium';
@@ -27,6 +28,11 @@ export default function View() {
     const { id } = useParams<string>();
     const [isLoading, setIsLoading] = useState(true);
     const [collection, setCollection] = useState<TSpecimen[]>([]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
     
     useEffect(() => {
         fetch('http://localhost:8000/user')
@@ -57,9 +63,10 @@ export default function View() {
 
     return (
         <>
+            <AddModal isOpen={isModalOpen} onClose={closeModal}/>
             <div className="view-container">
                 <HomeButton/>
-                <ToolBar/>
+                <ToolBar addButtonClick={openModal}/>
                 <ZoomBar/>
             </div>
             <Viewer data={collection}/>

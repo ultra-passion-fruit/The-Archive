@@ -347,12 +347,25 @@ body:has(.margin) {
 }
 
 .add-modal{
-    display: none;
+    background: white;
+    color: black; /* Text color for visibility */
+    width: 250px;
+    height: 170px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-overlay {
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }
