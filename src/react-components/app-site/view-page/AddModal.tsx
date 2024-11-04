@@ -10,7 +10,9 @@ const AddModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
     return (
         <div className="modal-overlay">
-            <div className="add-modal"> Test </div>
+            <div className="add-modal">
+                <button className="close-button" onClick={onClose}>X</button>
+            Add Specimen </div>
         </div>
     )
 }
