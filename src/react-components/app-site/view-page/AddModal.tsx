@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../../../styles/AddModal.css"
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -12,7 +12,8 @@ const AddModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         <div className="modal-overlay">
             <div className="add-modal">
                 <button className="close-button" onClick={onClose}>X</button>
-            Add Specimen </div>
+                <h1>Add Specimen</h1>
+            </div>
         </div>
     )
 }
