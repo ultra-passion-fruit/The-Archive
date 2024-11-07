@@ -13,6 +13,7 @@ const AddModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             <div className="add-modal">
                 <button className="close-button" onClick={onClose}>X</button>
                 <h1>Add Specimen</h1>
+                <button className="confirm-button" >Confirm Selection</button> {/* onClick={handleConfirm} */}
             </div>
         </div>
     )
