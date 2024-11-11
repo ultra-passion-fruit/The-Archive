@@ -8,9 +8,9 @@ interface GripProps {
 export default function Grud({ children }: GripProps) {
     return (
         <div className="grid">
-            <div className="card">
-                {children}
-            </div>
-        </div>
+            {React.Children.map(children, (child) => (
+                <div className="card">{child}</div>
+            ))}
+       </div>
     )
 }
