@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../../styles/AddModal.css"
+import "../../../styles/AddModal.css";
 import { TSpecimen } from "./View";
 import Specimen from "../herbarium-page/Specimen";
 import Grid from "./Grid";
