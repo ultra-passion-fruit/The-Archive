@@ -25,7 +25,8 @@ import { Collection } from '../herbarium-page/Herbarium';
     
 export default function View() {
 
-    const { id } = useParams<string>();
+    const { id } = useParams<{ id: string }>();
+    const [specimensId, setSpecimensId] = useState<Set<string>>()
     const [isLoading, setIsLoading] = useState(true);
     const [collection, setCollection] = useState<TSpecimen[]>([]);
 
@@ -33,8 +34,13 @@ export default function View() {
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-    
+
+    const setSpecimens = (specimens: Set<string>) => {
+        setSpecimensId(specimens);
+    }
+
     useEffect(() => {
+        console.log(collection);
         fetch('http://localhost:8000/user')
             .then(res => {
                 return res.json();
@@ -50,12 +56,28 @@ export default function View() {
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 500);
-                
             })
             .catch((error) => {
                 setIsLoading(false);
             })
-    }, [collection]);
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/user')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                const newCollection = data.specimens.filter((specimens: Collection) => {
+                    return specimensId?.has(specimens._id);
+                });
+
+                setCollection(prevCollection => [...prevCollection, ...newCollection]);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [specimensId])
 
     if (isLoading) {
         return <div>Loading...</div>
@@ -63,7 +85,7 @@ export default function View() {
 
     return (
         <>
-            <AddModal isOpen={isModalOpen} onClose={closeModal}/>
+            <AddModal isOpen={isModalOpen} onClose={closeModal} onConfirm={setSpecimens}/>
             <div className="view-container">
                 <HomeButton/>
                 <ToolBar addButtonClick={openModal}/>
