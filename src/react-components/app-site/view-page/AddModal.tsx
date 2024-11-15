@@ -7,9 +7,10 @@ import Grid from "./Grid";
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
+    onConfirm: (speciemens: Set<string>) => void;
   }
 
-const AddModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const AddModal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [specimens, setSpecimens] = useState<TSpecimen[]>([]);
     const [selectedSpecimens, setSelectedSpecimens] = useState<Set<string>>(new Set());
@@ -40,11 +41,28 @@ const AddModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         });
     };
 
+    const handleConfirm = () => {
+        if (selectedSpecimens.size > 0) {
+            onConfirm(selectedSpecimens);
+            resetSpecimens();
+            onClose();
+        } else {
+            alert("Please select a specimen");
+        }
+    }
+
+    const resetSpecimens = () => {
+        setSelectedSpecimens(new Set());
+    }
+
     return (
         <div className="modal-overlay">
             <div className="add-modal">
                 <div>
-                    <button className="close-button" onClick={onClose}>X</button>
+                    <button className="close-button" onClick={() => {
+                                                                    onClose()
+                                                                    resetSpecimens()
+                                                                    }}>X</button>
                 </div>
                 <div>
                     <h1>Add Specimen</h1>
@@ -66,7 +84,7 @@ const AddModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     </Grid>
                 </div>
                 <div>
-                    <button className="confirm-button" >Confirm Selection</button> {/* onClick={handleConfirm} */}
+                    <button className="confirm-button" onClick={handleConfirm}>Confirm Selection</button>
                 </div>
             </div>
         </div>
