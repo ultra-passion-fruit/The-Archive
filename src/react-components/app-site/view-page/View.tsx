@@ -26,7 +26,7 @@ import { Collection } from '../herbarium-page/Herbarium';
 export default function View() {
 
     const { id } = useParams<{ id: string }>();
-    const [specimensId, setSpecimensId] = useState<Set<string>>()
+    const [specimenIds, setspecimenIds] = useState<Set<string>>()
     const [isLoading, setIsLoading] = useState(true);
     const [collection, setCollection] = useState<TSpecimen[]>([]);
 
@@ -36,12 +36,22 @@ export default function View() {
     const closeModal = () => setIsModalOpen(false);
 
     const setSpecimens = (specimens: Set<string>) => {
-        setSpecimensId(specimens);
+        setspecimenIds(specimens);
     }
 
     useEffect(() => {
-        console.log(collection);
-        fetch('http://localhost:8000/user')
+        const storedCollection = sessionStorage.getItem('specimens');
+
+        if (storedCollection && JSON.parse(storedCollection).length > 0){
+            const parsedCollection = JSON.parse(storedCollection);
+
+            setCollection(parsedCollection);
+            
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 500);
+        } else {
+            fetch('http://localhost:8000/user')
             .then(res => {
                 return res.json();
             })
@@ -50,9 +60,13 @@ export default function View() {
                 //     accum[curren._id] = curren;
                 // }, {}).get(id))
                 // setCollection(data.collections[0].specimens);
-                setCollection(data.collections.find((collec: Collection) => {
+                const fetchedSpecimens = data.collections.find((collec: Collection) => {
                     return collec._id === id;
-                }).specimens);
+                }).specimens;
+
+                setCollection(fetchedSpecimens);
+                sessionStorage.setItem('specimens', JSON.stringify(fetchedSpecimens));
+
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 500);
@@ -60,24 +74,32 @@ export default function View() {
             .catch((error) => {
                 setIsLoading(false);
             })
+        }
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8000/user')
+        if (specimenIds && specimenIds.size > 0) {
+            fetch('http://localhost:8000/user')
             .then(res => {
                 return res.json();
             })
             .then(data => {
                 const newCollection = data.specimens.filter((specimens: Collection) => {
-                    return specimensId?.has(specimens._id);
+                    return specimenIds?.has(specimens._id);
                 });
 
-                setCollection(prevCollection => [...prevCollection, ...newCollection]);
+                const combinedCollection = [...collection, ...newCollection];
+                setCollection(combinedCollection);
+                
+                if (combinedCollection.length > 0){
+                    sessionStorage.setItem('specimens', JSON.stringify(combinedCollection));
+                }
             })
             .catch((error) => {
                 console.log(error);
             })
-    }, [specimensId])
+        }
+    }, [specimenIds])
 
     if (isLoading) {
         return <div>Loading...</div>
